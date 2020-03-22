@@ -97,7 +97,7 @@ export class AuthService {
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user !== null && user.phoneNumber !== null) { return true; }
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null ) ? true : false;
   }
 
   get localStorageEmailIsNotVerified() {
@@ -108,6 +108,9 @@ export class AuthService {
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
+  }
+  FacebookAuth() {
+    return this.AuthLogin(new auth.FacebookAuthProvider());
   }
 
   // Auth logic to run auth providers
